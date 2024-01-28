@@ -1,52 +1,40 @@
-import { getImageUrl } from './utils.js';
-
-function Profile ({
-  imageId,
-  name,
-  profession,
-  formation,
-  interesting,
-  imageSize = 70
-}) {
-  return (
-      <section className="profile">
-        <h2>{name}</h2>
-        <img
-          className="avatar"
-          src={getImageUrl('imageId')}
-          alt={name}
-          width={imageSize}
-          height={imageSize}
-        />
-        <ul>
-            <li><b>Profession:</b> {profession}</li>
-            <li>
-            <b>Formation: {formation.length} </b>
-            ({formation.join(', ')})
-            </li>
-          <li>
-            <b>Interesting: </b>
-            {interesting}
-          </li>
-        </ul>
-    </section>
-  );
+function Item({ name, isPacked }) {
+  let itemContent = name;
+  return <li className="item">
+    {name}{isPacked ? '✔' : '❌'}
+  </li>;
 }
 
-export default function Gallery() {
+export default function PackingList() {
   return (
-    <div>
-      <h1>Self Introduction</h1>
-      <Profile
-        imageId="c4hun"
-        name="Sacha, c4hun"
-        profession="Cashier"
-        interesting="Angular, AWS Cloud and Linux OS"
-        formation={[
-          '2023-2024 Studi: GRADUATE DEVELOPPEUR WEB FULL STACK',
-          'EFC formation: Assistant Accountant',
-        ]}
-      />
-    </div>
+    <section>
+      <h1>Sacha's capabilities List</h1>
+      <ul>
+        <Item 
+          isPacked={true} 
+          name="Linux" 
+        />
+        <Item 
+          isPacked={false} 
+          name="Angular" 
+        />
+        <Item 
+          isPacked={false} 
+          name="Java" 
+        />
+        <Item 
+          isPacked={true} 
+          name="SQL" 
+        />
+        <Item 
+          isPacked={true} 
+          name="Node.Js" 
+        />
+        <Item 
+          isPacked={false} 
+          name="Diploma BTS(Bac+2)" 
+        />
+      </ul>
+    </section>
   );
 }
